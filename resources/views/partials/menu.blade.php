@@ -18,19 +18,7 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
                 <div class="collaspe_icon open_miniSide">
                     <i class="ti-menu"></i>
                 </div>
-                <div class="serach_field-area ml-40">
-                    @if (auth()->user()->role_id)
-                        <div class="search_inner">
-                            <form action="#">
-                                <div class="search_field">
-                                    <input type="text" placeholder="{{ __('common.Search') }}" id="search"
-                                        onkeyup="showResult(this.value)">
-                                </div>
-                                <button type="button"><i class="ti-search"></i></button>
-                            </form>
-                        </div>
-                        <div id="livesearch"></div>
-                    @endif
+               
                     @if (auth()->user()->role_id)
                         <div class="select_style d-flex">
 
@@ -79,6 +67,20 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
 							
                         </div>
                     @endif
+                     <div class="serach_field-area ml-40">
+                    @if (auth()->user()->role_id)
+                        <div class="search_inner">
+                            <form action="#">
+                                <div class="search_field">
+                                    <input type="text" placeholder="{{ __('common.Search') }}" id="search"
+                                        onkeyup="showResult(this.value)">
+                                </div>
+                                <button type="button"><i class="ti-search"></i></button>
+                            </form>
+                        </div>
+                        <div id="livesearch"></div>
+                    @endif
+                    </div>
                 </div>
                 <div class="header_right d-flex justify-content-between align-items-center">
                     <div class="header_notification_warp d-flex align-items-center">
