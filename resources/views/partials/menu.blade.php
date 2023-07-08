@@ -18,7 +18,7 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
                 <div class="collaspe_icon open_miniSide">
                     <i class="ti-menu"></i>
                 </div>
-               
+               <div class="serach_field-area ml-40">
                     @if (auth()->user()->role_id)
                         <div class="select_style d-flex">
 
@@ -46,7 +46,7 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
                 <div class="header_middle d-none d-md-block">
                     @if (auth()->user()->role_id)
                         <div class="select_style d-flex">
-
+                            
                             @php
                                 if (session()->has('locale')) {
                                     $locale = session()->get('locale');
