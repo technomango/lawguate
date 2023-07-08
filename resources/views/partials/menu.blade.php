@@ -63,7 +63,29 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
 
                     </div>
 
+@if (auth()->user()->role_id)
+                        <div class="select_style d-flex">
 
+                            @php
+                                if (session()->has('locale')) {
+                                    $locale = session()->get('locale');
+                                } else {
+                                    session()->put('locale', config('configs.language_native'));
+                                    $locale = session()->get('locale');
+                                }
+                            @endphp
+
+                            <select name="code" id="language_code" class="nice_Select bgLess mb-0"
+                                onchange="change_Language()">
+                                @foreach (Illuminate\Support\Facades\Cache::get('languages') as $key => $language)
+                                    <option value="{{ $language->code }}"
+                                        @if ($locale == $language->code) selected @endif>{{ $language->native }}
+                                    </option>
+                                @endforeach
+                            </select>
+							
+                        </div>
+                    @endif
                     <div class="profile_info">
                         {{-- <img src="{{ file_exists(auth()->user()->avatar) ? asset(auth()->user()->avatar) : asset('public\backEnd/img/staff.jpg') }}" alt="#"> --}}
                         <div class="userThumb_40"
