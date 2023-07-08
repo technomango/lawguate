@@ -31,6 +31,29 @@ Illuminate\Support\Facades\Cache::rememberForever('languages', function () {
                         </div>
                         <div id="livesearch"></div>
                     @endif
+                    @if (auth()->user()->role_id)
+                        <div class="select_style d-flex">
+
+                            @php
+                                if (session()->has('locale')) {
+                                    $locale = session()->get('locale');
+                                } else {
+                                    session()->put('locale', config('configs.language_native'));
+                                    $locale = session()->get('locale');
+                                }
+                            @endphp
+
+                            <select name="code" id="language_code" class="nice_Select bgLess mb-0"
+                                onchange="change_Language()">
+                                @foreach (Illuminate\Support\Facades\Cache::get('languages') as $key => $language)
+                                    <option value="{{ $language->code }}"
+                                        @if ($locale == $language->code) selected @endif>{{ $language->native }}
+                                    </option>
+                                @endforeach
+                            </select>
+							
+                        </div>
+                    @endif
                 </div>
                 <div class="header_middle d-none d-md-block">
                     @if (auth()->user()->role_id)
